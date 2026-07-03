@@ -46,4 +46,15 @@ public class AuthController {
 
         return ResponseEntity.ok("Login provisioned for " + request.employeeId());
     }
+    @PostMapping("/bootstrap-admin")
+public ResponseEntity<String> bootstrapAdmin() {
+    authService.provisionLogin(
+        "EMP001",
+        "Demo Admin",
+        "password123",
+        Role.ADMIN
+    );
+
+    return ResponseEntity.ok("Bootstrap admin created");
+}
 }

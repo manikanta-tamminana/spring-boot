@@ -67,7 +67,7 @@ public class SecurityConfig {
                                 res.sendError(HttpServletResponse.SC_FORBIDDEN, "Access denied"))
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/auth/login", "/api/auth/bootstrap-admin").permitAll()
                         .requestMatchers("/api/auth/provision").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/certificates/all").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/certificates/employee/**").hasAnyRole("USER", "ADMIN")
